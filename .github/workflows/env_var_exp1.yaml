@@ -1,7 +1,9 @@
 name: Greeting on a variable day
 
 
-on: workflow_dispatch
+on:
+
+  workflow_dispatch
 
 
 env:
@@ -17,14 +19,15 @@ jobs:
 
     env:
 
-      Greeting: Hello ## Environment variable for the job
+      GREETING: Hello ## Environment variable for the job
 
     steps:
 
       - name: "Say Hello Mona it's Monday"
 
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        run: echo "$GREETING $First_Name. Today is $DAY_OF_WEEK!"
 
         env:
 
           First_Name: Mona ## Environment variable only for the step "Say Hello Mona it's Monday" of the job "greeting_job"
+
