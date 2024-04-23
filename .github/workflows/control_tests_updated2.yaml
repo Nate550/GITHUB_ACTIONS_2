@@ -1,13 +1,6 @@
 name: Control Push
 
-
-on:
-
-  push:
-
-    branches:
-
-      - main
+on: push
 
 
 jobs:
@@ -20,14 +13,14 @@ jobs:
 
     steps:
 
-      - name: Checkout on master
+      - name: Checkout on main
 
         uses: actions/checkout@v3
 
 
       - name: Set up Python
 
-        uses: actions/setup-python@v2
+		uses: actions/setup-python@master
 
         with:
 
@@ -47,12 +40,9 @@ jobs:
 
         run: |
 
-          pytest
+          pytest test
 
 
       - name: Run flake8
 
-        run: |
-
-          flake8 --count . --exit-zero --max-complexity=10 --max-line-length=79 --statistics
-
+        uses: py-actions/flake8@v2
